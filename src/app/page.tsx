@@ -9,6 +9,10 @@ const bebasNeue = Bebas_Neue({
 
 export default function Dashboard() {
   return (
+    <div>
+      <div className="absolute text-start inset-0 z-2">
+      <Header />
+      </div>
     <div className="relative h-screen bg-black opacity-90 overflow-hidden">
       <FlickeringGrid
         className="absolute inset-0 -z-1 bg-blue-900"
@@ -18,19 +22,24 @@ export default function Dashboard() {
         color="rgba(0, 0, 0, 1)"
         maxOpacity={0.2}
       />
-      <div className="absolute text-start inset-0 z-2">
-      <Header />
-      </div>
       
-      
-
-
-
       <div className="flex h-full w-full items-center justify-center">
         <h1 className={`${bebasNeue.className} sm:text-[200px] text-4xl text-yellow-100 drop-shadow-lg`}>
           PAUGNAT 2026
         </h1>
       </div>
+      
     </div>
+
+    <div className="p-8 bg-white w-full">
+
+    </div>
+
+
+
+
+      </div>
+
+    
   );
 }
