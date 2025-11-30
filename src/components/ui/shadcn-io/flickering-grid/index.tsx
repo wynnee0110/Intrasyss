@@ -24,7 +24,7 @@ export const FlickeringGrid: React.FC<FlickeringGridProps> = ({
   squareSize = 4,
   gridGap = 6,
   flickerChance = 0.3,
-  color = "rgba(0, 0, 0, 1)",
+  color = "rgba(242, 255, 1, 1)",
   width,
   height,
   className,
