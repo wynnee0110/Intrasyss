@@ -1,5 +1,5 @@
 "use client";
-
+import Header from "@/components/header";
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 
@@ -39,8 +39,12 @@ export default function EventsPage() {
   if (events.length === 0) return <p className="p-8 text-center">No events found</p>;
 
   return (
+    <div>
+      <Header/>
     <div className="min h-screen w-full bg-white p-8  ">
-      <h1 className="text-black text-4xl font-bold mb-8 text-center">Upcoming Events</h1>
+      
+      <h1 className="text-black text-4xl font-bold mb-8 text-start">Upcoming Events</h1>
+      
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 ">
         {events.map((event) => (
           <div
@@ -55,8 +59,11 @@ export default function EventsPage() {
               </span>
             )}
           </div>
+          
         ))}
       </div>
+      </div>
+    
     </div>
   );
 }

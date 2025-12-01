@@ -64,7 +64,7 @@ export default function LeaderboardSection() {
               </div>
 
               {/* Score */}
-              <span className="text-lg font-bold text-gray-900">{team.score}</span>
+              <span className="text-lg font-bold text-gray-900 opacity-0">{team.score}</span>
 
               {/* Medals */}
               <div className="flex items-center space-x-2 ml-6">

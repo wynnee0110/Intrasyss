@@ -35,7 +35,7 @@ export default function Dashboard() {
         </div>
       </div>
 
-      <div className="p-8 bg-white w-full h-screen">
+      <div className="p-8 bg-white w-full h-200">
         <h1 className={`${bebasNeue.className} text-black sm:text-6xl text-center text-4xl `}>LEADERBOARD </h1>
 
 <LeaderboardSection />
