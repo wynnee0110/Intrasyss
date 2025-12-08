@@ -15,7 +15,7 @@ export default function Dashboard() {
         <Header />
       </div>
 
-      <div className="relative h-screen bg-black opacity-90 overflow-hidden">
+      <div className="relative h-[500px] sm:h-screen bg-black opacity-90 overflow-hidden">
         <FlickeringGrid
           className="absolute inset-0 -z-1 bg-blue-900"
           squareSize={4}
@@ -26,9 +26,9 @@ export default function Dashboard() {
         />
 
 
-        <div className="flex h-full w-full items-center justify-center">
+        <div className="flex h-full w-full items-center justify-center mt-10 sm:mt-10">
           <h1
-            className={`${bebasNeue.className} sm:text-[200px] text-4xl text-yellow-100 drop-shadow-lg`}
+            className={`${bebasNeue.className} sm:text-[200px] text-8xl text-center text-yellow-100 drop-shadow-lg`}
           >
             PAUGNAT 2026
           </h1>
@@ -36,7 +36,7 @@ export default function Dashboard() {
       </div>
 
       <div className="p-8 bg-white w-full h-200">
-        <h1 className={`${bebasNeue.className} text-black sm:text-6xl text-center text-4xl `}>LEADERBOARD </h1>
+        <h1 className={`${bebasNeue.className} text-black sm:text-9xl text-center text-4xl `}>LEADERBOARD </h1>
 
 <LeaderboardSection />
       </div>
