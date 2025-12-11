@@ -19,7 +19,7 @@ export default function EventsPage() {
       // Make sure the table name matches exactly (case-sensitive)
       const { data, error } = await supabase
         .from("Events") // <-- match your table name
-        .select("id, name, date, type")
+        .select("id, name, date, type, time")
         .order("date", { ascending: true });
 
       if (error) {
