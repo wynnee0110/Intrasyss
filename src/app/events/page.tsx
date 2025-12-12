@@ -8,6 +8,7 @@ type Event = {
   name: string;
   date: string;
   type?: string;
+  time?:string;
 };
 
 export default function EventsPage() {
@@ -55,7 +56,7 @@ export default function EventsPage() {
             <p className="text-gray-600 mb-2">{event.date || "No Date"}</p>
             {event.type && (
               <span className="text-sm px-2 py-1 bg-gray-200 text-black rounded-full">
-                {event.type}
+                {event.type} {event.time}
               </span>
             )}
           </div>
