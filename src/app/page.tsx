@@ -30,7 +30,7 @@ export default function Dashboard() {
           <h1
             className={`${bebasNeue.className} sm:text-[200px] text-8xl text-center text-yellow-100 drop-shadow-lg`}
           >
-            PAUGNAT 2026
+            PAUGNAT 2025
           </h1>
         </div>
       </div>
