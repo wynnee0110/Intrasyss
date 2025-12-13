@@ -2,22 +2,25 @@
 
 import { Teko } from "next/font/google";
 
-const teko = Teko({ subsets: ["latin"] });
+const teko = Teko({ 
+  subsets: ["latin"],
+  weight: ["400", "700"]
+});
 
 export default function Header() {
   return (
-    <header className="bg-yellow-500 w-full py-4 shadow-md flex items-center justify-center">
-      <nav className={`flex gap-12 text-4xl font-semibold text-black  ${teko.className}`}>
+    <header className="w-full py-6 shadow-lg flex items-center justify-center">
+      <nav className={`flex gap-16 ${teko.className}`}>
         <a 
           href="/"
-          className="hover:text-white transition-colors duration-200"
+          className="text-3xl lg:text-4xl font-black text-slate-200 hover:text-yellow-400 drop-shadow-lg hover:drop-shadow-[0_0_10px_rgba(251,191,36,0.5)] transition-all duration-300 tracking-[0.05em] uppercase"
         >
           Home
         </a>
 
         <a 
           href="/events"
-          className="hover:text-white transition-colors duration-200"
+          className="text-3xl lg:text-4xl font-black text-slate-200 hover:text-yellow-400 drop-shadow-lg hover:drop-shadow-[0_0_10px_rgba(251,191,36,0.5)] transition-all duration-300 tracking-[0.05em] uppercase"
         >
           Events
         </a>
