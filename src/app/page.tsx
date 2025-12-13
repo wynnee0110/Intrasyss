@@ -59,12 +59,12 @@ export default function Dashboard() {
                 2026
               </h1>
             </div>
-            <div className="inline-flex items-center gap-3 sm:gap-4 lg:gap-5 px-8 sm:px-12 lg:px-16 xl:px-20 py-3.5 sm:py-4 lg:py-5 
-              bg-slate-800/90 border-2 border-yellow-500/60 backdrop-blur-xl rounded-3xl lg:rounded-[2.5rem] 
+            <div className="inline-flex items-center gap-3 sm:gap-4 lg:gap-5 px-8 sm:px-12 lg:px-16 xl:px-10 py-3.5 sm:py-4 lg:py-5 
+              bg-slate-800/90 border-2 border-yellow-500/60 backdrop-blur-xl rounded-4xl lg:rounded-[2.5rem] 
               text-lg sm:text-xl lg:text-2xl xl:text-3xl font-bold text-white shadow-2xl hover:shadow-yellow-500/30 
               transition-all duration-300 hover:scale-[1.02] mx-auto">
               <div className="w-3.5 h-3.5 sm:w-4 sm:h-4 lg:w-5 lg:h-5 xl:w-6 xl:h-6 bg-yellow-400 rounded-full shadow-xl lg:shadow-2xl flex-shrink-0" />
-              <span className="tracking-[0.1em]">INTRAMURALS • USTP</span>
+              <span className="tracking-[0.1em]">USTP</span>
             </div>
           </div>
         </div>
