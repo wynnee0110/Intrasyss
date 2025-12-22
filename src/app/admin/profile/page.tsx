@@ -24,10 +24,7 @@ export default function ProfilePage() {
   if (loading) return <p>Loading...</p>;
 
   return (
-    <div style={{ padding: 40 }}>
-      <h1>Profile</h1>
-      <p>Name: {profile.full_name}</p>
-      <p>Avatar: {profile.avatar_url || "No avatar"}</p>
+    <div className = "h-100">
     </div>
   );
 }

@@ -33,6 +33,7 @@ export default function AdminPage() {
     team1: "",
     team2: "",
   });
+  const [activeType, setActiveType] = useState<string>("all");
 
   useEffect(() => {
     checkAuth();
@@ -115,6 +116,26 @@ export default function AdminPage() {
     }
   }
 
+  // Event type tabs config - general types only
+  const EVENT_TABS = [
+    { key: "all", label: "ALL", emoji: "📋" },
+    { key: "sport", label: "SPORT", emoji: "⚽" },
+    { key: "esport", label: "ESPORT", emoji: "🎮" },
+    { key: "dance", label: "DANCE", emoji: "💃" },
+    { key: "music", label: "MUSIC", emoji: "🎵" },
+  ];
+
+  // Simple filter logic for general types
+  const filteredEvents =
+    activeType === "all"
+      ? events
+      : events.filter(ev => ev.type === activeType);
+
+  // Tab click handler
+  function handleTabClick(type: string) {
+    setActiveType(type);
+  }
+
   if (loading) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-900 to-black flex items-center justify-center p-8">
@@ -140,8 +161,8 @@ export default function AdminPage() {
           <button
             onClick={handleLogout}
             className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-8 py-4 
-                       rounded-2xl font-black text-lg uppercase tracking-[0.1em] shadow-xl hover:shadow-2xl 
-                       hover:-translate-y-1 transition-all duration-300 border-2 border-red-500/50"
+                        rounded-2xl font-black text-lg uppercase tracking-[0.1em] shadow-xl hover:shadow-2xl 
+                        hover:-translate-y-1 transition-all duration-300 border-2 border-red-500/50"
           >
             LOGOUT
           </button>
@@ -158,6 +179,7 @@ export default function AdminPage() {
               </h2>
               
               <div className="space-y-5">
+                {/* Form fields remain exactly the same */}
                 <div>
                   <label className="block text-sm font-bold text-slate-300 uppercase tracking-wider mb-3">Event Name</label>
                   <input
@@ -236,9 +258,9 @@ export default function AdminPage() {
                   disabled={!form.name.trim()}
                   className={`w-full py-4 rounded-2xl font-black text-xl uppercase tracking-[0.1em] transition-all duration-300 shadow-2xl
                             ${form.name.trim()
-                              ? 'bg-gradient-to-r from-yellow-500 to-amber-500 text-black border-2 border-yellow-400/50 hover:shadow-yellow-500/25 hover:-translate-y-1'
-                              : 'bg-slate-700/50 border-2 border-slate-600/50 text-slate-500 cursor-not-allowed'
-                            }`}
+                            ? 'bg-gradient-to-r from-yellow-500 to-amber-500 text-black border-2 border-yellow-400/50 hover:shadow-yellow-500/25 hover:-translate-y-1'
+                            : 'bg-slate-700/50 border-2 border-slate-600/50 text-slate-500 cursor-not-allowed'
+                          }`}
                 >
                   {form.id ? "UPDATE EVENT" : "CREATE EVENT"}
                 </button>
@@ -247,7 +269,7 @@ export default function AdminPage() {
                   <button
                     onClick={() => setForm({ id: null, name: "", date: "", time: "", type: "", team1: "", team2: "" })}
                     className="w-full py-3 bg-slate-700/50 hover:bg-slate-600/50 text-slate-300 border border-slate-600/50 
-                               rounded-xl font-semibold uppercase tracking-wider text-sm transition-all hover:-translate-y-0.5"
+                              rounded-xl font-semibold uppercase tracking-wider text-sm transition-all hover:-translate-y-0.5"
                   >
                     CANCEL EDIT
                   </button>
@@ -261,27 +283,51 @@ export default function AdminPage() {
             <div className="flex items-center justify-between mb-8">
               <h2 className={`${bebasNeue.className} text-3xl text-slate-200 tracking-[0.15em] uppercase`}>MATCH SCHEDULE</h2>
               <span className="bg-slate-700/50 text-slate-300 px-6 py-2 rounded-2xl text-sm font-black tracking-wider border border-slate-600/50">
-                {events.length} EVENTS
+                {filteredEvents.length} EVENTS
               </span>
             </div>
-            
-            {events.length === 0 ? (
+
+            {/* Tabs Navigation */}
+            <div className="bg-slate-800/90 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-4 mb-8 shadow-xl">
+              <div className="flex flex-wrap gap-3 overflow-x-auto pb-2 -mb-2 scrollbar-hide">
+                {EVENT_TABS.map((tab) => (
+                  <button
+                    key={tab.key}
+                    onClick={() => handleTabClick(tab.key)}
+                    className={`flex items-center gap-2 px-6 py-3 rounded-xl font-black uppercase tracking-[0.1em] text-sm transition-all duration-300
+                              ${activeType === tab.key
+                                ? 'bg-gradient-to-r from-yellow-500 to-amber-500 text-black shadow-lg shadow-yellow-500/25 scale-105 border-2 border-yellow-400'
+                                : 'bg-slate-700/50 hover:bg-slate-600/50 text-slate-300 border-2 border-slate-600/50 hover:scale-105 hover:shadow-lg'
+                              }`}
+                  >
+                    <span>{tab.emoji}</span>
+                    <span>{tab.label}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {filteredEvents.length === 0 ? (
               <div className="bg-slate-800/50 backdrop-blur-xl rounded-3xl border border-slate-700/50 p-16 text-center shadow-2xl">
                 <div className="text-8xl mb-6 opacity-50">📅</div>
-                <p className="text-2xl text-slate-400 font-black tracking-wider uppercase mb-2">NO EVENTS</p>
-                <p className="text-slate-500 text-lg tracking-wide">Create your first match above</p>
+                <p className={`${bebasNeue.className} text-2xl text-slate-400 font-black tracking-wider uppercase mb-2`}>NO EVENTS</p>
+                <p className="text-slate-500 text-lg tracking-wide">
+                  {activeType === "all" ? "Create your first match above" : `No ${activeType.toUpperCase()} events yet`}
+                </p>
               </div>
             ) : (
               <div className="space-y-4">
-                {events.map((ev) => (
+                {filteredEvents.map((ev) => (
                   <div key={ev.id} className="group bg-slate-800/90 backdrop-blur-xl rounded-3xl border border-slate-700/50 p-8 
-                                             hover:bg-slate-700/90 hover:border-yellow-400/50 hover:shadow-2xl hover:shadow-yellow-500/10 
-                                             transition-all duration-500 shadow-xl">
+                                            hover:bg-slate-700/90 hover:border-yellow-400/50 hover:shadow-2xl hover:shadow-yellow-500/10 
+                                            transition-all duration-500 shadow-xl">
                     <div className="flex items-start justify-between gap-6">
                       <div className="flex-1">
                         <div className="flex items-center gap-4 mb-4">
                           <span className="px-5 py-2 rounded-2xl text-sm font-black uppercase tracking-wider text-white shadow-lg
-                                          bg-gradient-to-r from-blue-500 to-blue-600">⚽ {ev.type.toUpperCase()}</span>
+                                          bg-gradient-to-r from-blue-500 to-blue-600">
+                            {EVENT_TABS.find(t => t.key === ev.type)?.emoji || "📋"} {ev.type.toUpperCase()}
+                          </span>
                         </div>
                         
                         <h3 className="text-2xl font-black text-white mb-4 tracking-tight drop-shadow-lg group-hover:text-yellow-300 transition-colors">

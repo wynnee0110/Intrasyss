@@ -104,26 +104,11 @@ export default function LeaderboardSection() {
                 </div>
 
                 {/* PERFECT Awards - WIDER PC GAPS */}
-                <div className="w-20 sm:w-24 lg:w-40 h-7 sm:h-8 lg:h-9 flex items-center justify-end gap-1 sm:gap-1.5 lg:gap-3 pr-1 lg:pr-4 flex-shrink-0">
-                  {team.gold && team.gold > 0 && (
-                    <div className="flex items-center gap-0.5 px-1 py-0.5 bg-yellow-500/20 border border-yellow-400/50 rounded-md backdrop-blur-sm shadow-sm flex-shrink-0 min-w-[2.25rem] sm:min-w-[2.5rem] lg:min-w-[2.75rem]">
-                      <span className="text-xs sm:text-sm lg:text-base flex-shrink-0">🥇</span>
-                      <span className="text-xs sm:text-sm lg:text-base font-bold text-yellow-300 flex-shrink-0">{team.gold}</span>
+                <div className="w-20 sm:w-24 lg:w-40 text-right flex-shrink-0">
+                  <span className="text-sm sm:text-base lg:text-lg font-mono font-bold text-slate-300 leading-none">
+                    {team.score} PTS
+                    </span>
                     </div>
-                  )}
-                  {team.silver && team.silver > 0 && (
-                    <div className="flex items-center gap-0.5 px-0.75 py-0.5 bg-slate-500/20 border border-slate-400/50 rounded-sm backdrop-blur-sm shadow-sm flex-shrink-0 min-w-[2rem] sm:min-w-[2.25rem] lg:min-w-[2.5rem]">
-                      <span className="text-xs sm:text-sm lg:text-base flex-shrink-0">🥈</span>
-                      <span className="text-xs sm:text-sm lg:text-base font-bold text-slate-300 flex-shrink-0">{team.silver}</span>
-                    </div>
-                  )}
-                  {team.bronze && team.bronze > 0 && (
-                    <div className="flex items-center gap-0.5 px-0.75 py-0.5 bg-amber-500/20 border border-amber-400/50 rounded-sm backdrop-blur-sm shadow-sm flex-shrink-0 min-w-[2rem] sm:min-w-[2.25rem] lg:min-w-[2.5rem]">
-                      <span className="text-xs sm:text-sm lg:text-base flex-shrink-0">🥉</span>
-                      <span className="text-xs sm:text-sm lg:text-base font-bold text-amber-300 flex-shrink-0">{team.bronze}</span>
-                    </div>
-                  )}
-                </div>
               </div>
             </div>
           );
